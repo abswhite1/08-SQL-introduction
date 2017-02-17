@@ -48,12 +48,12 @@ Article.prototype.toHtml = function() {
  * - Outputs: This function populates the empty array Article.all with individual instances of Article in order of date published.
  */
 Article.loadAll = function(rows) {
-  // DONE (toto): A method on the rows input that uses an anonymous callback function to compare 2 instances of Article are sorted by the date published. Callback function is executed when row.sort is invoked.
+  // DONE: A method on the rows input that uses an anonymous callback function to compare 2 instances of Article are sorted by the date published. Callback function is executed when row.sort is invoked.
   rows.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
   });
 
-  // DONE: (toto) A method on rows input by which each instance of Article is pushed into an array, Article.all, in order of date published.
+  // DONE: A method on rows input by which each instance of Article is pushed into an array, Article.all, in order of date published.
   rows.forEach(function(ele) {
     Article.all.push(new Article(ele));
   })
@@ -105,7 +105,7 @@ Article.fetchAll = function(callback) {
 // DONE:
 /**
  * OVERVIEW of
- * - This method deletes the data in table ""/articles" when called (executing the D portion of the CRUD framework)
+ * - This method deletes the data in table "/articles" when called (executing the D portion of the CRUD framework)
  * - Inputs: the method takes a parameter of a callback function.
  * - Outputs: The output of the method is the database table is deleted, the data is logged in the console, and the function is called back on itself if the callback input is true.
  */
@@ -143,12 +143,12 @@ Article.prototype.insertRecord = function(callback) {
 
 // ++++++++++++++++++++++++++++++++++++++
 
-// TODO
+// DONE
 /**
  * OVERVIEW of
- * - Describe what the method does
- * - Inputs: identify any inputs and their source
- * - Outputs: identify any outputs and their destination
+ * - The deleteRecord method deletes a record within the /articles table.
+ * - Inputs: the methos takes in a parameter of callback, a function called later on within the method to call the method on itself.
+ * - Outputs: the output is a record of /article (instance of Articles object ) is deleted from the /article table
  */
 Article.prototype.deleteRecord = function(callback) {
   // DONE: jQuery.ajax performs asynchronous HTTP requests, where ajax is a method on jQuery. Below is a delete request to delete a record from the database table on the url "/articles" (followed by the jQuery of the article id for the instance).
@@ -165,15 +165,15 @@ Article.prototype.deleteRecord = function(callback) {
 
 // ++++++++++++++++++++++++++++++++++++++
 
-// TODO
+// DONE
 /**
  * OVERVIEW of
- * - Describe what the method does
- * - Inputs: identify any inputs and their source
- * - Outputs: identify any outputs and their destination
+ * - The updateRecord method updates a record in the /articles table (instance of Article object). This is helpful if there is an error or change to be made in a single field of a single record.
+ * - Inputs: the method has a parameter of callback, a function called later to render the updateRecord method on itself.
+ * - Outputs: the otuput of this method is that the record in the /articles table will be updated
  */
 Article.prototype.updateRecord = function(callback) {
-  // DONE: jQuery.ajax performs asynchronous HTTP requests, where ajax is a method on jQuery. Below is a delete request to delete a record from the database table on the url "/articles" (followed by the jQuery of the article id for the instance).
+  // DONE: Below is a delete request to delete a record from the database table on the table /articles at url "/articles" (followed by the jQuery of the article id for the instance).
   $.ajax({
     url: `/articles/${this.article_id}`,
     method: 'PUT',
@@ -192,6 +192,3 @@ Article.prototype.updateRecord = function(callback) {
     if (callback) callback();
   });
 };
-
-//.then = success of error
-//Callback is a function that is a callback of a function
